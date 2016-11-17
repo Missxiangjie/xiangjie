@@ -1,0 +1,161 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<title> New Document </title>  
+<script type="text/javascript" src="../../js/angular.min.js"></script>  
+<style>
+	table{
+		width: 800px;
+		border-collapse:collapse;
+		margin: 200px auto;
+		font-family: "微软雅黑";
+	}
+	caption{
+		font-size:32px;
+		padding: 10px 0;
+		color: #333;
+	}
+	table td,
+	table th{
+		padding: 10px 20px;
+		border: 1px solid #ddd;
+	}
+	table th{
+		background: #efefef;
+	}
+	input {
+		width: 50px;
+		padding: 5px 0;
+		border: 1px solid #ddd;
+		text-align: center;
+	}
+	.total{
+		font-size: 24px;
+		color:#f00;
+	}
+</style>
+</head>  
+  
+ <body ng-app="myApp">  
+
+	<table ng-controller="firstController">
+		<tbody>
+			<caption>购物车</caption>
+			<tr>
+				<th>商品名</th>
+				<th>数量值</th>
+				<th>数量</th>
+				<th>价格</th>
+				<th>单品总价</th>
+				<th></th>
+			</tr>
+			<tr ng-repeat="item in items">
+				<td width="20%">{{item.name}}</td>
+				<td width="20%" align="center"><input ng-model="item.quantity"/></td>
+				<td width="15%" align="center">{{item.quantity}}</td>
+				<td width="15%" align="center">{{item.price}}</td>
+				<td width="15%" align="center">{{item.quantity * item.price}}</td>
+				<td width="15%" align="center"><button ng-click="remove($index)">remove</button></td>
+			</tr>
+			<tr>
+				<td colspan="6">总共：<span class="total">{{getTotal()}}</span></td>
+			</tr>
+		</tbody>
+	</table>
+ 
+	<script type="text/javascript"> 
+	
+	var app = angular.module('myApp', []);
+	
+	app.controller('firstController', function ($scope) {
+	
+		$scope.items = [
+			{'name': '电视', 'quantity': 8, 'price': 10},
+			{'name': '洗衣机', 'quantity': 8, 'price': 20},
+			{'name': '冰箱', 'quantity': 8, 'price': 30}
+		]
+		
+		$scope.getTotal = function () {
+			var total = 0;
+			for (var i=0; i<$scope.items.length; i++) {
+				total += $scope.items[i].quantity * $scope.items[i].price;
+			}
+			
+			return total;
+			
+		}
+		
+		$scope.remove = function (idx) {
+			$scope.items.splice(idx, 1);
+		}
+	})
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	    var app = angular.module('myApp',[]);
+//	    app.controller('firstController', function($scope){  
+//	  	
+//		$scope.items=[  
+//		    {title:'海尔冰箱',quantity:8,price:3.95},  
+//		    {title:'长虹电视',quantity:8,price:3.95},  
+//		    {title:'电饭锅',quantity:8,price:3.95}  
+//		];  
+//		  
+//		$scope.remove=function(index){  
+//		    $scope.items.splice(index,1);  
+//		}  
+//		  
+//		$scope.totalCart=function(){  
+//		  	var total = 0;  
+//		    for(var i=0;i<$scope.items.length;i++){  
+//		    	total = total + $scope.items[i].price * $scope.items[i].quantity;  
+//		    }  
+//		  	return total;  
+//		};  
+//	})  
+  
+  	</script>  
+</body>  
+</html>  
